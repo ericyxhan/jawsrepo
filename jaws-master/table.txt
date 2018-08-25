@@ -1,0 +1,3 @@
+CREATE TABLE users(username varchar, userid SERIAL, password varchar, name varchar)
+CREATE TABLE Signup (Name varchar, Ride boolean, day varchar, side varchar)
+CREATE TABLE WaitingList(waitday varchar, waitride varchar, waitside varchar, waitname varchar)

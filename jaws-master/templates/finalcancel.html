@@ -1,0 +1,63 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Cancel
+{% endblock %}
+
+{% block main %}
+     <center>
+         <table style="width:50%" id = "table">
+            <tr>
+                <th>
+                    Day
+                </th>
+                <th>
+                    Ride
+                </th>
+                <th>
+                    Side
+                </th>
+                <th>
+                    Availability
+                </th>
+            </tr>
+        {% for i in range(day|length) %}
+        <tr>
+            <td align = "center">{{day[i]["day"]}}</td>
+            <td align = "center">{{ride[i]["ride"]}}</td>
+            <td align = "center">{{side[i]["side"]}}</td>
+            <td align = "center">{{available[i]}}/20</td>
+        </tr>
+        {% endfor %}
+    </table>
+         <h3>
+             <form action="/finalcancel" method="post">
+                <div class="form-group">
+                    <input type="checkbox" name="wednesday" value="day" {{a}}> Wednesday
+                    <select name = "side">
+                        <option disabled selected value> -- select an side -- </option>
+                        <option value="right">Right</option>
+                        <option value="left">Left</option>
+                    </select>
+                    <input type="checkbox" name="saturday" value="day" {{b}}> Saturday
+                    <select name = "side">
+                        <option disabled selected value> -- select an side -- </option>
+                        <option value="right">Right</option>
+                        <option value="left">Left</option>
+                    </select>
+                    <input type="checkbox" name="sunday" value="day" {{c}}> Sunday
+                    <select name = "side">
+                        <option disabled selected value> -- select an side -- </option>
+                        <option value="right">Right</option>
+                        <option value="left">Left</option>
+                    </select>
+                    <input type="checkbox" name="ride" value="ride"> I need a ride <br>
+                </div>
+                <div class="form-group"></div>
+                <div>
+                    <button class="btn btn-primary" type="submit">Sign Me Up</button>
+                </div>
+            </form>
+        </h3>
+        </center>
+{% endblock %}

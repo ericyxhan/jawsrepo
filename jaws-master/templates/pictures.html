@@ -1,0 +1,20 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Print
+{% endblock %}
+
+{% block main %}
+    <form action="/pictures" method="post">
+        <center><select name = "year">
+            <option value="2018">2018</option>
+            <option value="Coming soon">Coming Soon...</option>
+        </select>
+        <select name = "season">
+            <option value="Spring">Spring</option>
+            <option value="Summer">Summer</option>
+            <option value="Coming soon"> Coming Soon...</option>
+        </select>
+        <button class="btn btn-primary" type="submit">Get Pictures</button></center>
+    </form>
+{% endblock %}

@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+    <html>
+        <head>
+            <Title>
+                JAWS
+            </Title>
+            <link rel="stylesheet" href="/static/styles.css">
+            <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        </head>
+        <body>
+            <div class="collapse navbar-collapse" id="navbar">
+                {% if session.user_id %}
+                    <ul class="navbar-nav mr-auto mt-2">
+                    <logo><img src="/static/jawslogo.png" alt="JAWS Logo" width="3%" height="3%"/></logo>
+                        <div class="dropdown">
+                            <button onclick="myFunction()" class="dropbtn"> Menu</button>
+                                <div id="myDropdown" class="dropdown-content">
+                                    <a class="nav-link" href="/">Home</a>
+                                    <a class="nav-link" href="/about">About</a>
+                                    <a class="nav-link" href="/pictures">Pictures</a>
+                                    <a class="nav-link" href="/finalcancel">Signups</a>
+                                    <a class="nav-link" href="/logout">Log Out</a>
+                                </div>
+                        </div>
+                    </ul>
+            </div>
+        <script>
+        function myFunction() {
+            document.getElementById("myDropdown").classList.toggle("show");
+        }
+        window.onclick = function(event) {
+            if (!event.target.matches('.dropbtn')) {
+                var dropdowns = document.getElementsByClassName("dropdown-content");
+                var i;
+                for (i = 0; i < dropdowns.length; i++) {
+                    var openDropdown = dropdowns[i];
+                if (openDropdown.classList.contains('show')) {
+                    openDropdown.classList.remove('show');
+                    }
+                }
+            }
+        }
+        </script>
+                {% else %}
+                    <ul class="navbar-nav ml-auto mt-2">
+                        <logo><img src="/static/jawslogo.png" alt="JAWS Logo" width="3%" height="3%"/></logo>
+                        <a class="nav-link" href="/about">About</a>
+                        <visitor>
+                            <a class="nav-link" href="/login">Log In</a>
+                            <a class="nav-link" href="/register">Register</a>
+                        </visitor>
+                    </ul>
+                {% endif %}
+        </nav>
+        {% if get_flashed_messages() %}
+            <header>
+                <div class="alert alert-primary border text-center" role="alert">
+                    {{ get_flashed_messages() | join(" ") }}
+                </div>
+            </header>
+        {% endif %}
+
+        <main class="container p-5">
+            {% block main %}{% endblock %}
+        </main>
+    </body>
+</html>

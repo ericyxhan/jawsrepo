@@ -1,0 +1,16 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Cancel
+{% endblock %}
+
+{% block main %}
+    <form action="/cancel" method="post">
+        <div class="form-group">
+            <input type="checkbox" name="wednesday" value="day"> Wednesday <br>
+            <input type="checkbox" name="saturday" value="day"> Saturday <br>
+            <input type="checkbox" name="sunday" value="day"> Sunday <br>
+        </div>
+        <button class="btn btn-primary" type="submit">Cancel</button>
+    </form>
+{% endblock %}
